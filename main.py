@@ -8,8 +8,8 @@ from aiogram.filters import Command
 from aiogram.enums import ParseMode
 from aiogram.client.default import DefaultBotProperties
 
-TOKEN = os.getenv("BOT_TOKEN", "ВАШ_ТОКЕН_БОТА")
-ADMIN_ID = int(os.getenv("ADMIN_ID", "0"))  # Ваш Telegram ID
+TOKEN = os.getenv("BOT_TOKEN", "9055891475:AAFnWF9ZR6yU38riMbEVMlAFPhMv9Q54cXY")
+ADMIN_ID = int(os.getenv("ADMIN_ID", "0"))  # 8274122612
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
