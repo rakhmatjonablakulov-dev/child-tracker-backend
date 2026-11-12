@@ -1,5 +1,30 @@
-your_project/
-├── .circleci/
-│   └── config.yml
-├── buildozer.spec
-└── main.py (или ваш основной файл)
+version: 2.1
+
+jobs:
+  build-apk:
+    docker:
+      - image: kivy/buildozer:latest
+    resource_class: large
+    steps:
+      - checkout
+      
+      - run:
+          name: Fix permissions and update system
+          command: |
+            sudo chown -R buildozer:buildozer /home/buildozer
+            git config --global --add safe.directory '*'
+
+      - run:
+          name: Build APK with Buildozer
+          command: |
+            buildozer -v android debug
+
+      - store_artifacts:
+          path: bin/
+          destination: apks
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build-apk
