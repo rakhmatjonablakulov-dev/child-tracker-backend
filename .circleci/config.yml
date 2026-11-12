@@ -1,0 +1,5 @@
+your_project/
+├── .circleci/
+│   └── config.yml
+├── buildozer.spec
+└── main.py (или ваш основной файл)
