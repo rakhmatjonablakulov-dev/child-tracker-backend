@@ -51,9 +51,9 @@ jobs:
             libswscale-dev \
             libavformat-dev \
             libavcodec-dev \
-            libgstreamer1.0-dev \
-            gstreamer1.0-plugins-base \
-            gstreamer1.0-plugins-good
+            
+          
+            
 
       - name: Установка Buildozer
         run: |
