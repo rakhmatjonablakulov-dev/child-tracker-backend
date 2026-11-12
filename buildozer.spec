@@ -1,51 +1,27 @@
 [app]
-
-# (str) Title of your application
-title = School Tracker
-
-# (str) Package name
+title = SchoolTracker
 package.name = schooltracker
-
-# (str) Package domain (needed for android packaging)
 package.domain = org.tracker
-
-# (list) Source files to include (let it include python files, graphics, etc.)
-source.include_exts = py,png,jpg,kv,atlas
-
-# (str) Source directory where the application files are located
 source.dir = .
+source.include_exts = py,png,jpg,kv,atlas,json,db
+version = 0.1
 
-# (str) Application versioning
-version = 1.0
+# Указываем стабильный Python 3.11 и нужные библиотеки
+requirements = python3==3.11.6,kivy==2.3.0,requests,certifi,urllib3,idna,charset-normalizer,plyer
 
-# (list) Application requirements
-requirements = python3,kivy,plyer,requests,certifi,urllib3,idna,charset-normalizer
-
-# (str) Supported orientations
 orientation = portrait
-
-# (int) Set fullscreen mode
 fullscreen = 0
 
-# (list) Permissions
-android.permissions = INTERNET, ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION, FOREGROUND_SERVICE
+# Разрешения Android (интернет обязателен для бота/запросов)
+android.permissions = INTERNET,ACCESS_NETWORK_STATE,WAKE_LOCK,FOREGROUND_SERVICE
 
-# (int) Target Android API, should be as high as possible.
+# Фиксируем проверенные версии SDK и NDK, чтобы сборка не падала
 android.api = 33
-
-# (int) Minimum API your APK will support.
-android.minapi = 21
-
-# (bool) Use AndroidX for support libraries
-android.enable_androidx = True
-
-# (bool) Indicate whether the user agrees to the Android SDK terms of service
+android.minapi = 24
+android.ndk = 25b
 android.accept_sdk_license = True
+android.archs = arm64-v8a
 
 [buildozer]
-
-# (int) Log level (0 = error only, 1 = info, 2 = debug (with command output))
 log_level = 2
-
-# (int) Display warning if buildozer is run as root (0 = False, 1 = True)
 warn_on_root = 1
