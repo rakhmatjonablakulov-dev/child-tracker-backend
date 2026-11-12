@@ -7,16 +7,31 @@ jobs:
     resource_class: large
     steps:
       - checkout
-      
+
+      # Восстановление кэша Android SDK и Buildozer для ускорения сборки
+      - restore_cache:
+          keys:
+            - buildozer-cache-{{ checksum "buildozer.spec" }}
+            - buildozer-cache-
+
       - run:
-          name: Fix permissions and update system
+          name: Set safe directory and check environment
           command: |
             git config --global --add safe.directory '*'
+            whoami
+            python3 --version
 
       - run:
           name: Build APK with Buildozer
           command: |
             buildozer -v android debug
+
+      # Сохранение кэша для будущих сборок
+      - save_cache:
+          key: buildozer-cache-{{ checksum "buildozer.spec" }}
+          paths:
+            - ~/.buildozer
+            - .buildozer
 
       - store_artifacts:
           path: bin/
