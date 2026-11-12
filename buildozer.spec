@@ -19,8 +19,6 @@ source.dir = .
 version = 1.0
 
 # (list) Application requirements
-# Note: urllib3, certifi, idna, charset_normalizer подтягиваются через requests, 
-# но для Android лучше явно указывать основные зависимости Python.
 requirements = python3,kivy,plyer,requests,certifi
 
 # (str) Supported orientations
@@ -38,11 +36,11 @@ android.api = 33
 # (int) Minimum API your APK will support.
 android.minapi = 21
 
-# (str) Android app theme, or use default
-# android.theme = @android:style/Theme.NoTitleBar
-
 # (bool) Use AndroidX for support libraries
 android.enable_androidx = True
+
+# (bool) Indicate whether the user agrees to the Android SDK terms of service
+android.accept_sdk_license = True
 
 [buildozer]
 
